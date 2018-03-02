@@ -8,9 +8,9 @@ def HoneycombSpinIceDirectionRandomOrdering(Direction):
     Direction = np.array([dir*random.randrange(-1,2,2) for dir in Direction])
     return Direction
 
-#  GSOrdering 1 corresponds to the ground state of the kagome dipolar spin ice system
+#  Spin_Solid_Phase corresponds to the ground state of the kagome dipolar spin ice system. This corresponds to an ordering with alternating hexagonal cells of different chirality.
 
-def HoneycombSpinIceDirectionGSOrdering1(Center,Lattice,Direction):
+def HoneycombSpinIceDirection_Spin_Solid_phase(Center,Lattice,Direction):
 
   sqrt3 = sqrt(3)
   epsilon = 10**-6
@@ -86,7 +86,15 @@ def HoneycombSpinIceDirectionGSOrdering1(Center,Lattice,Direction):
   return Direction
 
 
-## GSOrdering2 corresponds to a first candidate for the ground state of our colloidal system
+## Ordering 2 corresponds to an ordering where:
+
+## - vertical spins in even rows point up.
+
+## - vertical spins in odd rows point down.
+
+## - tilted spins below the even rows point right.
+
+## -tilted spins above the even rows point left.
 
 def HoneycombSpinIceDirectionGSOrdering2(Center,Lattice,Direction):
     
