@@ -96,7 +96,7 @@ def HoneycombSpinIceDirection_Spin_Solid_phase(Center,Lattice,Direction):
 
 ## -tilted spins above the even rows point left.
 
-def HoneycombSpinIceDirectionGSOrdering2(Center,Lattice,Direction):
+def HoneycombSpinIceDirection_Ordering2(Center,Lattice,Direction):
     
     sqrt3 = sqrt(3)
     epsilon = 10**-6
@@ -137,9 +137,18 @@ def HoneycombSpinIceDirectionGSOrdering2(Center,Lattice,Direction):
     
     return Direction
 
-## GSOrdering3 corresponds to a second candidate for the ground state of our colloidal system
+## Ordering 3 corresponds to en ordering where:
 
-def HoneycombSpinIceDirectionGSOrdering3(Center,Lattice,Direction):
+## - for the vertical spins in even rows: one over two points up, the others points down.
+
+## - for the vertical spins in odd rows: one over two points down, the others points up.
+
+## - all tilted spins below the even rows point right.
+
+## - all tilted spins above the even rows point left.
+
+
+def HoneycombSpinIceDirection_Ordering3(Center,Lattice,Direction):
 ####
     JJ1= np.logical_and( 
          np.logical_or(
@@ -349,8 +358,14 @@ def HoneycombSpinIceCalculateGeometry(Sx,Sy,Lattice,Ordering):
     if Ordering == "Random":
         Direction = HoneycombSpinIceDirectionRandomOrdering(Direction)
 
-    elif Ordering == "GroundState":
-         Direction = HoneycombSpinIceDirectionGSOrdering(Center,Lattice,Direction)
+    elif Ordering == "Spin Solid Phase":
+         Direction = HoneycombSpinIceDirectionSpin_Solid_Phase(Center,Lattice,Direction)
+            
+    elif Ordering == "Ordering 2":
+         Direction = HoneycombSpinIceDirection_Ordering2(Center,Lattice,Direction)
+            
+    elif Ordering == "Ordering 3":
+         Direction = HoneycombSpinIceDirection_Ordering3(Center,Lattice,Direction)
          
     elif Ordering == "Biased":
         error("Sorry, I haven't programed this yet")
